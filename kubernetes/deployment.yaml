@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flasky-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flasky
+  template:
+    metadata:
+      labels:
+        app: flasky
+    spec:
+      containers:
+      - name: flasky
+        image: gcr.io/cs436-project-2025/flasky:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+           cpu: "250m"
+           memory: "512Mi"
+          limits:
+           cpu: "500m"
+           memory: "512Mi"
